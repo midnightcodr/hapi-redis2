@@ -9,42 +9,42 @@ const Hapi = require('hapi');
 const Boom = require('boom');
 
 const clientOpts = {
-	url: 'redis://localhost:6379',
-	decorate: true
+    url: 'redis://localhost:6379',
+    decorate: true
 };
 
 const server = new Hapi.Server();
 server.connection({ port: 8000 });
 
 server.register({
-	register: require('./lib'),
-	options: clientOpts
+    register: require('./lib'),
+    options: clientOpts
 }, function (err) {
-	if (err) {
-		console.error(err);
-		throw err;
-	}
+    if (err) {
+        console.error(err);
+        throw err;
+    }
 
-	server.route( {
-		method: 'GET',
-		path: '/redis/{val}',
-		handler(request, reply) {
-			const client = request.redis.client;
+    server.route( {
+        method: 'GET',
+        path: '/redis/{val}',
+        handler(request, reply) {
+            const client = request.redis.client;
 
-			client.set('hello', request.params.val, (err) => {
-				if(err) {
-					console.log(err);
-					return reply(Boom.internal('Internal Redis error'));
-				}
-				reply({
-					result: 'ok'
-				});
-			})
-		}
-	});
+            client.set('hello', request.params.val, (err) => {
+                if(err) {
+                    console.log(err);
+                    return reply(Boom.internal('Internal Redis error'));
+                }
+                reply({
+                    result: 'ok'
+                });
+            })
+        }
+    });
 
-	server.start(function() {
-		console.log(`Server started at ${server.info.uri}`);
-	});
+    server.start(function() {
+        console.log(`Server started at ${server.info.uri}`);
+    });
 });
 ```
