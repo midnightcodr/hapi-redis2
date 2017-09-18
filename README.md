@@ -14,6 +14,7 @@ const clientOpts = {
 };
 
 const server = new Hapi.Server();
+server.connection({ port: 8000 });
 
 server.register({
 	register: require('./lib'),
