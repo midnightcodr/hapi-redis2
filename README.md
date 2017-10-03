@@ -48,3 +48,5 @@ server.register({
     })
 })
 ```
+
+Check out [lib/index.test.js](midnightcodr/hapi-redis2/blob/master/lib/index.test.js) for more usage examples.
