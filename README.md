@@ -9,44 +9,44 @@ const Hapi = require('hapi')
 const Boom = require('boom')
 
 const clientOpts = {
-	url: 'redis://localhost:6379',
-	decorate: true
+    url: 'redis://localhost:6379',
+    decorate: true
 }
 
 const server = new Hapi.Server({ port: 8080 })
 
 server
-	.register({
-		plugin: require('./lib'),
-		options: clientOpts
-	})
-	.then(() => {
-		server.route({
-			method: 'GET',
-			path: '/redis/{val}',
-			handler(request, h) {
-				const client = request.redis.client
+    .register({
+        plugin: require('./lib'),
+        options: clientOpts
+    })
+    .then(() => {
+        server.route({
+            method: 'GET',
+            path: '/redis/{val}',
+            handler(request, h) {
+                const client = request.redis.client
 
-				return client
-					.setAsync('hello', request.params.val)
-					.then(() => {
-						return {
-							result: 'ok'
-						}
-					})
-					.catch(err => {
-						return Boom.internal('Internal Redis error')
-					})
-			}
-		})
+                return client
+                    .setAsync('hello', request.params.val)
+                    .then(() => {
+                        return {
+                            result: 'ok'
+                        }
+                    })
+                    .catch(err => {
+                        return Boom.internal('Internal Redis error')
+                    })
+            }
+        })
 
-		server.start().then(() => {
-			console.log(`Server started at ${server.info.uri}`)
-		})
-	})
-	.catch(err => {
-		throw err
-	})
+        server.start().then(() => {
+            console.log(`Server started at ${server.info.uri}`)
+        })
+    })
+    .catch(err => {
+        throw err
+    })
 ```
 
 Check out [lib/index.test.js](lib/index.test.js) for more usage examples.
