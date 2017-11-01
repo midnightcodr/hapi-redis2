@@ -13,40 +13,35 @@ const clientOpts = {
     decorate: true
 }
 
-const server = new Hapi.Server()
-server.connection({ port: 8000 })
+const server = new Hapi.Server({port: 8080})
 
 server.register({
-    register: require('./lib'),
+    plugin: require('./lib'),
     options: clientOpts
-}, function (err) {
-    if (err) {
-        console.error(err)
-        throw err
-    }
+}).then(() => {
 
     server.route({
         method: 'GET',
         path: '/redis/{val}',
-        handler(request, reply) {
+        handler(request, h) {
             const client = request.redis.client
 
-            client.set('hello', request.params.val, (err) => {
-                if (err) {
-                    console.log(err)
-                    return reply(Boom.internal('Internal Redis error'))
-                }
-                reply({
-                    result: 'ok'
-                })
-            })
+			return client.setAsync('hello', request.params.val).then(() => {
+				return {
+					result: 'ok'
+				}
+			}).catch(err => {
+                return Boom.internal('Internal Redis error')
+			})
         }
     })
 
-    server.start(function () {
+    server.start().then(() => {
         console.log(`Server started at ${server.info.uri}`)
     })
+}).catch(err => {
+	throw err
 })
 ```
 
-Check out [lib/index.test.js](https://github.com/midnightcodr/hapi-redis2/blob/master/lib/index.test.js#L222) for more usage examples.
+Check out [lib/index.test.js](lib/index.test.js) for more usage examples.
