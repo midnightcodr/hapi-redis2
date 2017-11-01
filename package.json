@@ -10,8 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "async": "^2.5.0",
-    "joi": "^11.0.1",
+    "joi": "^11.4.0",
     "redis": "^2.8.0"
   },
   "repository": {
@@ -22,7 +21,7 @@
     "lib": "lib"
   },
   "devDependencies": {
-    "hapi": "^16.6.0",
-    "jest": "^21.1.0"
+    "hapi": "^17.0.0-rc9",
+    "jest": "^21.2.1"
   }
 }
