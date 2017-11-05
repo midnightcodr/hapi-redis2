@@ -22,7 +22,7 @@
     "lib": "lib"
   },
   "devDependencies": {
-    "hapi": "^17.0.0-rc9",
+    "hapi": "^17.0.0",
     "jest": "^21.2.1"
   }
 }
