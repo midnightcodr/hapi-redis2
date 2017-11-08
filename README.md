@@ -50,3 +50,7 @@ server
 ```
 
 Check out [lib/index.test.js](lib/index.test.js) for more usage examples.
+
+Requirements:
+    Hapi>=17
+    nodejs>=8
