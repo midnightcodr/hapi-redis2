@@ -8,45 +8,45 @@ Usage example:
 const Hapi = require('hapi')
 const Boom = require('boom')
 
-const clientOpts = {
-    url: 'redis://localhost:6379',
-    decorate: true
-}
+const launchServer = async function() {
+    const clientOpts = {
+        url: 'redis://localhost:6379',
+        decorate: true
+    }
 
-const server = new Hapi.Server({ port: 8080 })
+    const server = new Hapi.Server({ port: 8080 })
 
-server
-    .register({
+    await server.register({
         plugin: require('./lib'),
         options: clientOpts
     })
-    .then(() => {
-        server.route({
-            method: 'GET',
-            path: '/redis/{val}',
-            handler(request, h) {
-                const client = request.redis.client
 
-                return client
-                    .setAsync('hello', request.params.val)
-                    .then(() => {
-                        return {
-                            result: 'ok'
-                        }
-                    })
-                    .catch(err => {
-                        return Boom.internal('Internal Redis error')
-                    })
+    server.route({
+        method: 'GET',
+        path: '/redis/{val}',
+        async handler(request) {
+            const client = request.redis.client
+
+            try {
+                await client.setAsync('hello', request.params.val)
+                return {
+                    result: 'ok'
+                }
+            } catch (err) {
+                throw Boom.internal('Internal Redis error')
             }
-        })
+        }
+    })
 
-        server.start().then(() => {
-            console.log(`Server started at ${server.info.uri}`)
-        })
-    })
-    .catch(err => {
-        throw err
-    })
+    await server.start()
+    console.log(`Server started at ${server.info.uri}`)
+}
+
+launchServer().catch(err => {
+    console.error(err)
+    process.exit(1)
+})
+   
 ```
 
 Check out [lib/index.test.js](lib/index.test.js) for more usage examples.
