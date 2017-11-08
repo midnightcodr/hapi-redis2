@@ -1,6 +1,7 @@
 Inspired by https://github.com/Marsup/hapi-mongodb, here's another simple
 redis plugin for hapijs that supports multiple connections.
 
+Update: Starting from version 1.0.0 this plugin only supports Hapi version 17 and above. If you are using hapijs prior to version 17, please check out version [0.9.11](https://github.com/midnightcodr/hapi-redis2/tree/0.9.11)
 
 Usage example: 
 
@@ -52,5 +53,7 @@ launchServer().catch(err => {
 Check out [lib/index.test.js](lib/index.test.js) for more usage examples.
 
 Requirements:
+
     Hapi>=17
+
     nodejs>=8
