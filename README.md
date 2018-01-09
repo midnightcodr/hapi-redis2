@@ -7,7 +7,11 @@ Inspired by https://github.com/Marsup/hapi-mongodb, here's an [ioredis](https://
 
 ### Options
 - decorate: string or boolean, mixed use of different types of decorate settings are not allowed.
-- settings: can be either an object,
+- settings: can be 
+
+A) `null`, redis client will be initialized with new Redis(), which connects to the redis server running on `localhost` at port 6379 without authentication.
+
+B) an object,
 ```
 {
   port: 6379,          // Redis port
@@ -17,7 +21,8 @@ Inspired by https://github.com/Marsup/hapi-mongodb, here's an [ioredis](https://
   db: 0
 }
 ```
-or a string, 
+
+C) a url string, 
 ```
 'redis://:auth@127.0.0.1:6379/4'
 ```
@@ -25,7 +30,7 @@ or a string,
 Note prior to v2, the `url` option was used.
 
 
-### Usage example
+### Example
 
 ```javascript
 const Hapi = require('hapi')
