@@ -5,22 +5,16 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "jest",
-    "lint": "eslint lib/**/*.js"
+    "lint": "standard 'lib/**/*.js'",
+    "lint:fix": "standard 'lib/**/*.js' --fix"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "ioredis": "^3.2.2",
-    "joi": "^13.1.0",
-    "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-async-await": "0.0.0",
-    "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-jest": "^21.17.0",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-standard": "^3.1.0"
+    "ioredis": "^3.2.2",
+    "joi": "^13.1.0"
   },
   "repository": {
     "type": "git",
@@ -31,6 +25,7 @@
   },
   "devDependencies": {
     "hapi": "^17.5.2",
-    "jest": "^23.1.0"
+    "jest": "^23.1.0",
+    "standard": "^11.0.1"
   }
 }
