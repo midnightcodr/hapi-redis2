@@ -29,7 +29,10 @@ C) a url string,
 
 Note prior to v2, the `url` option was used.
 
-
+Install by 
+```
+npm install hapi-redis2
+```
 ### Example
 
 ```javascript
@@ -45,7 +48,7 @@ const launchServer = async function() {
     const server = new Hapi.Server({ port: 8080 })
 
     await server.register({
-        plugin: require('./lib'),
+        plugin: require('hapi-redis2'),
         options: clientOpts
     })
 
