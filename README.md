@@ -29,7 +29,7 @@ C) a url string,
 
 Note prior to v2, the `url` option was used.
 
-Install by 
+### installation
 ```
 npm install hapi-redis2
 ```
