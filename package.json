@@ -24,8 +24,8 @@
     "lib": "lib"
   },
   "devDependencies": {
-    "hapi": "^17.5.2",
-    "jest": "^23.1.0",
+    "hapi": "^17.7.0",
+    "jest": "^23.6.0",
     "standard": "^11.0.1"
   }
 }
