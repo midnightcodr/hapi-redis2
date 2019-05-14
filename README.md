@@ -36,8 +36,8 @@ npm install hapi-redis2
 ### Example
 
 ```javascript
-const Hapi = require('hapi')
-const Boom = require('boom')
+const Hapi = require('@hapi/hapi')
+const Boom = require('@hapi/boom')
 
 const launchServer = async function() {
     const clientOpts = {
@@ -45,7 +45,7 @@ const launchServer = async function() {
         decorate: true
     }
 
-    const server = new Hapi.Server({ port: 8080 })
+    const server = Hapi.Server({ port: 8080 })
 
     await server.register({
         plugin: require('hapi-redis2'),
@@ -84,6 +84,6 @@ Check out [lib/index.test.js](lib/index.test.js) for more usage examples.
 
 Requirements:
 
-    Hapi>=17
+    @hapi/hapi>=18.3.1
 
     nodejs>=8
