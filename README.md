@@ -84,6 +84,6 @@ Check out [lib/index.test.js](lib/index.test.js) for more usage examples.
 
 Requirements:
 
-    @hapi/hapi>=18.3.1
+    @hapi/hapi>=20
 
     nodejs>=8
