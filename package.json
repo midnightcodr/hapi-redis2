@@ -1,6 +1,6 @@
 {
   "name": "hapi-redis2",
-  "version": "2.2.3",
+  "version": "3.0.0",
   "description": "Inspired by https://github.com/Marsup/hapi-mongodb, here's another simple redis plugin for hapijs that supports multiple connections.",
   "main": "lib/index.js",
   "scripts": {
