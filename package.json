@@ -12,9 +12,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@hapi/joi": "^15.0.3",
+    "@hapi/joi": "^17.1.1",
     "eslint-config-standard": "^11.0.0",
-    "ioredis": "^4.9.3"
+    "ioredis": "^4.19.4"
   },
   "repository": {
     "type": "git",
@@ -24,8 +24,8 @@
     "lib": "lib"
   },
   "devDependencies": {
-    "@hapi/hapi": "^18.4.1",
-    "jest": "^24.3.1",
+    "@hapi/hapi": "^20.0.3",
+    "jest": "^26.6.3",
     "standard": "^13.0.2"
   }
 }
